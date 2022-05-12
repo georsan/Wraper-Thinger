@@ -11,9 +11,9 @@ from BD.bd import guardar
 async def rquest(url,token,q):
 
     start=time()
-    header={"Authorization":token}
+    #header={"Authorization":token}
     hora= datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    response = httpx.get(url,params=q,headers=header)
+    response = httpx.get(url,params=q,auth=token)
     try:
         response.raise_for_status()
     except httpx.HTTPStatusError as exc:
@@ -44,9 +44,9 @@ async def rquest(url,token,q):
 async def rquestput(url,token,parametros):
     start=time()
     #token=client._headers["authorization"]
-    header={"Authorization":token}
+    #header={"Authorization":token}
     hora= datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    response = httpx.get(url,headers=header,params=parametros)
+    response = httpx.get(url,params=parametros,auth=token)
     try:
         response.raise_for_status()
     except httpx.HTTPStatusError as exc:
