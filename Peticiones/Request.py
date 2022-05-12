@@ -1,16 +1,19 @@
 from datetime import datetime
 from time import time
+from wsgiref import headers
 
-from fastapi import Response
-from BD.bd import guardar
 import httpx
+
+
+from BD.bd import guardar
+
 
 async def rquest(url,token,q):
 
     start=time()
-    header={'Authorization':token}
+    header={"Authorization":token}
     hora= datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    response = httpx.get(url,params=q,auth=token)
+    response = httpx.get(url,params=q,headers=header)
     try:
         response.raise_for_status()
     except httpx.HTTPStatusError as exc:
@@ -41,8 +44,9 @@ async def rquest(url,token,q):
 async def rquestput(url,token,parametros):
     start=time()
     #token=client._headers["authorization"]
+    header={"Authorization":token}
     hora= datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    response = httpx.get(url,auth=token,params=parametros)
+    response = httpx.get(url,headers=header,params=parametros)
     try:
         response.raise_for_status()
     except httpx.HTTPStatusError as exc:

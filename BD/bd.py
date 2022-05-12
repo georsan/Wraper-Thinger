@@ -15,6 +15,6 @@ def dato(item)-> dict:
         "Contenido":item["content"],
         "Hora":item["tiempo"]
     }
-
-async def traerdatos():
+#prueba
+def traerdatos():
     pass

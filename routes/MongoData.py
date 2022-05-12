@@ -1,8 +1,8 @@
 from typing import Optional
 
+from fastapi import APIRouter
 
-from fastapi import APIRouter,Header
-from BD.bd import dato, traerdatos
+from BD.bd import dato
 from config.db import collection_name,db
 Monogo_router=APIRouter()
 
